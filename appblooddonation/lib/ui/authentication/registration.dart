@@ -1,22 +1,23 @@
 import 'package:appblooddonation/bloc/authbloc.dart';
+import 'package:appblooddonation/ui/authentication/4.dart';
 import 'package:appblooddonation/ui/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class BuyerRegistration extends StatefulWidget {
-  const BuyerRegistration({super.key});
+class Registration extends StatefulWidget {
+  const Registration({super.key});
 
   @override
-  State<BuyerRegistration> createState() => _BuyerRegistrationState();
+  State<Registration> createState() => _RegistrationState();
 }
 
-class _BuyerRegistrationState extends State<BuyerRegistration> {
+class _RegistrationState extends State<Registration> {
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController organizationController = TextEditingController();
+  final TextEditingController locationController= TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController pincodeController = TextEditingController();
+  final TextEditingController bloodgroupController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController districtController = TextEditingController();
   final TextEditingController townController = TextEditingController();
@@ -50,9 +51,9 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
               ),
               const SizedBox(height: 10.0),
               TextField(
-                controller: organizationController,
+                controller: locationController,
                 decoration: const InputDecoration(
-                  labelText: 'Organization',
+                  labelText: 'location',
                 ),
               ),
               const SizedBox(height: 10.0),
@@ -73,10 +74,10 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
               ),
               const SizedBox(height: 10.0),
               TextField(
-                controller: pincodeController,
+                controller: bloodgroupController,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
-                  labelText: 'Pincode',
+                  labelText: 'blood Group',
                 ),
               ),
               const SizedBox(height: 10.0),
@@ -121,9 +122,9 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                           password: passwordController.text,
                           district: districtController.text,
                           town: townController.text,
-                          pincode: pincodeController.text,
+                          pincode: bloodgroupController.text,
                           place: townController.text,
-                          orgaisation: organizationController.text
+                          orgaisation: locationController.text
 
                           // orgaisation: orgaisation.text,
                           ));
@@ -149,7 +150,10 @@ class _BuyerRegistrationState extends State<BuyerRegistration> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const LoginScreen()));
+                           
+                          
+                             builder: (context) => const Four()));
+                             
                     } else if (state is UserRegError) {
                       Fluttertoast.showToast(
                         msg: state.error,

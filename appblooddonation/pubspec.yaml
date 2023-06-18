@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.0.8
   geolocator: ^7.7.1
   lottie: ^1.4.3
+  image_picker: ^0.8.9
 
 dev_dependencies:
   flutter_test:

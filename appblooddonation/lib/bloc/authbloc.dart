@@ -13,12 +13,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   String? dsvm;
   LoginBloc() : super(LoginState()) {
     on<GetLoginEvent>(_getLoginEvent);
-
+   on<GetLogin1Event>(_getLogin1Event);
     on<GetUserRegistrationEvent>(_getUserRegistrationEvent);
     on<GetLogoutEvent>(_getLogoutEvent);
   }
   Future<FutureOr<void>> _getLoginEvent(
       GetLoginEvent event, Emitter<LoginState> emit) async {
+    emit(Requesting());
+    LoginModel loginModel;
+    Map data = {
+      "userName": event.email,
+      "password": event.password,
+    };
+    var url = '/login';
+    loginModel = await Repository().checkPhoneNumber(url: url, data: data);
+    if (loginModel.status == true) {
+      await PrefManager.setToken(loginModel.token);
+      await PrefManager.setRole(loginModel.role);
+      await PrefManager.setUserId(loginModel.userName);
+      emit(LoginSuccess(loginModel: loginModel));
+    } else {
+      emit(LoginError(error: loginModel.msg.toString()));
+    }
+  }
+   Future<FutureOr<void>> _getLogin1Event(
+      GetLogin1Event event, Emitter<LoginState> emit) async {
     emit(Requesting());
     LoginModel loginModel;
     Map data = {
@@ -43,23 +62,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(UserRegistering());
     CommonModel commonModel = CommonModel();
     Map data = {
-      "name": event.name,
-      "phone": event.phone,
-      "email": event.email,
-      "password": event.password,
-      "district": event.district,
-      "town": event.town,
-      "street": event.street,
-      "buildingNo": event.buildingNo,
-      "houseNo": event.houseNo,
-      "landmark": event.landmark,
-      "pincode": event.pincode,
-      "place": event.town,
-      "orgaisation": event.orgaisation
+      "donarname": event.name,
+      "donarnumb": event.phone,
+      "gmail": event.email,
+      "key": event.password,
+      "bloodgroup": event.pincode,
+       "location": event.orgaisation,
+      // "street": event.street,
+      // "buildingNo": event.buildingNo,
+      // "houseNo": event.houseNo,
+      // "landmark": event.landmark,
+      // "pincode": event.pincode,
+      // "place": event.town,
+      // "orgaisation": event.orgaisation
     };
-    event.isuser == true
-        ? url = '/user/registration'
-        : url = '/buyer/registration';
+    url = '/donarregistration';
+        
     commonModel = await Repository().userreg(url: url, data: data);
     if (commonModel.status == true) {
       emit(RegUserSucces(error: commonModel.msg.toString()));
@@ -97,6 +115,12 @@ class GetLoginEvent extends LoginEvent {
   final String? password;
   final String? email;
   GetLoginEvent({this.password, this.email});
+}
+
+class GetLogin1Event extends LoginEvent {
+  final String? password;
+  final String? email;
+  GetLogin1Event({this.password, this.email});
 }
 
 class GetLogoutEvent extends LoginEvent {

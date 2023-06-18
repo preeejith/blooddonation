@@ -1,4 +1,6 @@
 import 'package:appblooddonation/bloc/authbloc.dart';
+import 'package:appblooddonation/ui/authentication/4.dart';
+import 'package:appblooddonation/ui/authentication/Certificate.dart';
 import 'package:appblooddonation/ui/authentication/registration.dart';
 import 'package:appblooddonation/ui/home.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const HomePage()));
+                                  builder: (context) => const Four()));
                         }
                       } else if (state is LoginError) {
                         Fluttertoast.showToast(
@@ -138,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    const BuyerRegistration()));
+                                    const Certificate()));
                       },
                       child: const Text('Register as Buyer'),
                     ),
