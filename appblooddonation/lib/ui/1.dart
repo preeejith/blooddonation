@@ -1,5 +1,3 @@
-import 'package:appblooddonation/ui/authentication/2.dart';
-import 'package:appblooddonation/ui/authentication/Certificate.dart';
 import 'package:flutter/material.dart';
 
 class One extends StatefulWidget {
@@ -33,10 +31,12 @@ class _OneState extends State<One> {
             ),
             MaterialButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Certificate()));
+                //  Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => const Certificate()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const One()));
               },
               child: const Text(
                 "LIFESTREAM",
