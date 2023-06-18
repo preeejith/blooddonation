@@ -4,15 +4,14 @@ import 'dart:io';
 import 'package:appblooddonation/prefmanager/prefmanager.dart';
 import 'package:http/http.dart' as http;
 
-
 class WebClient {
   // static const baseUrl = "http://192.168.54.155:5200";
 /////
   // static const baseUrl = "http://192.168.52.136:4000";
-  static const baseUrl="http://192.168.53.119:9090";
-  
+  static const baseUrl = "http://192.168.53.119:9090";
+
   // static const baseUrl = "https://apidfzbfzdbzbdbzf.gtschooloflogistics.com/";
-   static const imageUrl = "http://apicecdgfabgzbzgbzrp.leopardtechlabs.in/file/get/";
+  static const imageUrl = "invalid";
 
   static Future<dynamic> post(url, data) async {
     var token = await PrefManager.getToken();

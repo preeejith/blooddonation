@@ -1,60 +1,58 @@
 import 'dart:async';
 
 import 'package:appblooddonation/models/commonbloc.dart';
-import 'package:appblooddonation/models/loginmodel.dart';
+import 'package:appblooddonation/models/signinmodel.dart';
 import 'package:appblooddonation/prefmanager/prefmanager.dart';
 import 'package:appblooddonation/repositories/repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   String? dsvm;
   LoginBloc() : super(LoginState()) {
     on<GetLoginEvent>(_getLoginEvent);
-   on<GetLogin1Event>(_getLogin1Event);
+    //  on<GetLogin1Event>(_getLogin1Event);
     on<GetUserRegistrationEvent>(_getUserRegistrationEvent);
     on<GetLogoutEvent>(_getLogoutEvent);
   }
   Future<FutureOr<void>> _getLoginEvent(
       GetLoginEvent event, Emitter<LoginState> emit) async {
     emit(Requesting());
-    LoginModel loginModel;
+    SigninModel signinModel;
     Map data = {
-      "userName": event.email,
-      "password": event.password,
+      "gmail": event.email,
+      "key": event.password,
     };
-    var url = '/login';
-    loginModel = await Repository().checkPhoneNumber(url: url, data: data);
-    if (loginModel.status == true) {
-      await PrefManager.setToken(loginModel.token);
-      await PrefManager.setRole(loginModel.role);
-      await PrefManager.setUserId(loginModel.userName);
-      emit(LoginSuccess(loginModel: loginModel));
+    var url = '/Login';
+    signinModel = await Repository().signin(url: url, data: data);
+    if (signinModel.status == true) {
+      await PrefManager.setToken(signinModel.token);
+
+      emit(LoginSuccess(signinModel: signinModel));
     } else {
-      emit(LoginError(error: loginModel.msg.toString()));
+      emit(LoginError(error: signinModel.msg.toString()));
     }
   }
-   Future<FutureOr<void>> _getLogin1Event(
-      GetLogin1Event event, Emitter<LoginState> emit) async {
-    emit(Requesting());
-    LoginModel loginModel;
-    Map data = {
-      "userName": event.email,
-      "password": event.password,
-    };
-    var url = '/login';
-    loginModel = await Repository().checkPhoneNumber(url: url, data: data);
-    if (loginModel.status == true) {
-      await PrefManager.setToken(loginModel.token);
-      await PrefManager.setRole(loginModel.role);
-      await PrefManager.setUserId(loginModel.userName);
-      emit(LoginSuccess(loginModel: loginModel));
-    } else {
-      emit(LoginError(error: loginModel.msg.toString()));
-    }
-  }
+  //  Future<FutureOr<void>> _getLogin1Event(
+  //     GetLogin1Event event, Emitter<LoginState> emit) async {
+  //   emit(Requesting());
+  //   LoginModel loginModel;
+  //   Map data = {
+  //     "userName": event.email,
+  //     "password": event.password,
+  //   };
+  //   var url = '/login';
+  //   loginModel = await Repository().checkPhoneNumber(url: url, data: data);
+  //   if (loginModel.status == true) {
+  //     await PrefManager.setToken(loginModel.token);
+  //     await PrefManager.setRole(loginModel.role);
+  //     await PrefManager.setUserId(loginModel.userName);
+  //     emit(LoginSuccess(loginModel: loginModel));
+  //   } else {
+  //     emit(LoginError(error: loginModel.msg.toString()));
+  //   }
+  // }
 
   Future<FutureOr<void>> _getUserRegistrationEvent(
       GetUserRegistrationEvent event, Emitter<LoginState> emit) async {
@@ -67,7 +65,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       "gmail": event.email,
       "key": event.password,
       "bloodgroup": event.pincode,
-       "location": event.orgaisation,
+      "location": event.orgaisation,
       // "street": event.street,
       // "buildingNo": event.buildingNo,
       // "houseNo": event.houseNo,
@@ -77,7 +75,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       // "orgaisation": event.orgaisation
     };
     url = '/donarregistration';
-        
+
     commonModel = await Repository().userreg(url: url, data: data);
     if (commonModel.status == true) {
       emit(RegUserSucces(error: commonModel.msg.toString()));
@@ -173,8 +171,8 @@ class UserRegistering extends LoginState {}
 class Loggingout extends LoginState {}
 
 class LoginSuccess extends LoginState {
-  final LoginModel loginModel;
-  LoginSuccess({required this.loginModel});
+  final SigninModel signinModel;
+  LoginSuccess({required this.signinModel});
 }
 
 class AdminLoginSuccess extends LoginState {

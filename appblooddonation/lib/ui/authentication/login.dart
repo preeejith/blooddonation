@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     listener: (context, state) {
                       if (state is LoginSuccess) {
-                        if (state.loginModel.role == "User") {
+                        if (state.signinModel.data!.role == "Donar") {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
