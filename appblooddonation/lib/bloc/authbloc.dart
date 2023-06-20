@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:appblooddonation/models/commonbloc.dart';
+import 'package:appblooddonation/models/donarregistrationmodel.dart';
+
 import 'package:appblooddonation/models/signinmodel.dart';
 import 'package:appblooddonation/prefmanager/prefmanager.dart';
 import 'package:appblooddonation/repositories/repository.dart';
@@ -34,23 +36,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginError(error: signinModel.msg.toString()));
     }
   }
-  //  Future<FutureOr<void>> _getLogin1Event(
-  //     GetLogin1Event event, Emitter<LoginState> emit) async {
+  // Future<FutureOr<void>> _getHospitalLoginEvent(
+  //     GetHospitalLoginEvent event, Emitter<LoginState> emit) async {
   //   emit(Requesting());
-  //   LoginModel loginModel;
+  //   SigninModel signinModel;
   //   Map data = {
-  //     "userName": event.email,
-  //     "password": event.password,
+  //     "staffid": event.staffid,
+  //     "key": event.password,
   //   };
-  //   var url = '/login';
-  //   loginModel = await Repository().checkPhoneNumber(url: url, data: data);
-  //   if (loginModel.status == true) {
-  //     await PrefManager.setToken(loginModel.token);
-  //     await PrefManager.setRole(loginModel.role);
-  //     await PrefManager.setUserId(loginModel.userName);
-  //     emit(LoginSuccess(loginModel: loginModel));
+  //   var url = '';
+  //   signinModel = await Repository().hospitalin(url: url, data: data);
+  //   if (signinModel.status == true) {
+  //     await PrefManager.setToken(signinModel.token);
+
+  //     emit(LoginSuccess(signinModel: signinModel));
   //   } else {
-  //     emit(LoginError(error: loginModel.msg.toString()));
+  //     emit(LoginError(error: signinModel.msg.toString()));
   //   }
   // }
 
@@ -58,10 +59,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       GetUserRegistrationEvent event, Emitter<LoginState> emit) async {
     String url;
     emit(UserRegistering());
-    CommonModel commonModel = CommonModel();
+    Donarregistrationmodel donarregistrationmodel;
     Map data = {
       "donarname": event.name,
-      "donarnumb": event.phone,
+      "donarnumber": event.phone,
       "gmail": event.email,
       "key": event.password,
       "bloodgroup": event.pincode,
@@ -76,12 +77,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     };
     url = '/donarregistration';
 
-    commonModel = await Repository().userreg(url: url, data: data);
-    if (commonModel.status == true) {
-      emit(RegUserSucces(error: commonModel.msg.toString()));
+    donarregistrationmodel = await Repository().registerin(url: url, data: data);
+    if (donarregistrationmodel.status == true) {
+      emit(RegUserSucces(error: donarregistrationmodel.msg.toString()));
     } else {
-      Fluttertoast.showToast(msg: commonModel.msg.toString());
-      emit(UserRegError(error: commonModel.msg.toString()));
+      Fluttertoast.showToast(msg: donarregistrationmodel.msg.toString());
+      emit(UserRegError(error: donarregistrationmodel.msg.toString()));
     }
   }
 
@@ -113,6 +114,11 @@ class GetLoginEvent extends LoginEvent {
   final String? password;
   final String? email;
   GetLoginEvent({this.password, this.email});
+}
+class GetHospitalLoginEvent extends LoginEvent{
+  final String? staffid;
+  final String? password;
+  GetHospitalLoginEvent({this.staffid,this.password});
 }
 
 class GetLogin1Event extends LoginEvent {
@@ -173,6 +179,11 @@ class Loggingout extends LoginState {}
 class LoginSuccess extends LoginState {
   final SigninModel signinModel;
   LoginSuccess({required this.signinModel});
+}
+
+class RegistrationSuccess extends LoginState {
+  final Donarregistrationmodel donarregistrationmodel;
+  RegistrationSuccess({required this.donarregistrationmodel});
 }
 
 class AdminLoginSuccess extends LoginState {

@@ -15,7 +15,7 @@ class _DonarsearchState extends State<Donarsearch> {
         padding: EdgeInsets.only(top: 350.0, left: 10.0, right: 10.0),
         child: Column(
           children: [
-            Image.asset("assets/img.png",height: 150,width: 100),
+            Image.asset("assets/blood.png",height: 150,width: 100),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextField(
@@ -63,7 +63,7 @@ class _DonarsearchState extends State<Donarsearch> {
                 ),
 
                 decoration: InputDecoration(
-                  hintText:"state" ,
+                  hintText:"Location" ,
                   contentPadding: const EdgeInsets.all(15),
                   prefixIcon: Icon(Icons.email),
 
@@ -78,65 +78,65 @@ class _DonarsearchState extends State<Donarsearch> {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: TextField(
 
 
-                style: TextStyle(
+            //     style: TextStyle(
 
-                    fontSize: 20,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
-                    //color: Colors.black,
-                    color: Color(0xffEEA02C)
+            //         fontSize: 20,
+            //         fontStyle: FontStyle.italic,
+            //         fontWeight: FontWeight.bold,
+            //         //color: Colors.black,
+            //         color: Color(0xffEEA02C)
 
-                ),
+            //     ),
 
-                decoration: InputDecoration(
-                  hintText:"district" ,
-                  contentPadding: const EdgeInsets.all(15),
-                  prefixIcon: Icon(Icons.email),
+            //     decoration: InputDecoration(
+            //       hintText:"district" ,
+            //       contentPadding: const EdgeInsets.all(15),
+            //       prefixIcon: Icon(Icons.email),
 
-                  //labelText: "xxx-xxx@gmail.com",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)
+            //       //labelText: "xxx-xxx@gmail.com",
+            //       border: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(30)
 
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: TextField(
 
 
-                style: TextStyle(
+            //     style: TextStyle(
 
-                    fontSize: 20,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
-                    //color: Colors.black,
-                    color: Color(0xffEEA02C)
+            //         fontSize: 20,
+            //         fontStyle: FontStyle.italic,
+            //         fontWeight: FontWeight.bold,
+            //         //color: Colors.black,
+            //         color: Color(0xffEEA02C)
 
-                ),
+            //     ),
 
-                decoration: InputDecoration(
-                  hintText:"tehsil" ,
-                  contentPadding: const EdgeInsets.all(15),
-                  prefixIcon: Icon(Icons.email),
+            //     decoration: InputDecoration(
+            //       hintText:"tehsil" ,
+            //       contentPadding: const EdgeInsets.all(15),
+            //       prefixIcon: Icon(Icons.email),
 
-                  //labelText: "xxx-xxx@gmail.com",
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30)
+            //       //labelText: "xxx-xxx@gmail.com",
+            //       border: OutlineInputBorder(
+            //           borderRadius: BorderRadius.circular(30)
 
-                  ),
-                ),
-              ),
-            ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: 20,
             ),

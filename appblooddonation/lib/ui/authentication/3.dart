@@ -35,7 +35,7 @@ class _ThreeState extends State<Three> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.only(left: 150,  top: 7, bottom: 35, ),
+                padding: const EdgeInsets.only(left: 190,  top: 7, bottom: 35, ),
                 child: Stack(
                   children: [
                     Positioned.fill(

@@ -1,5 +1,7 @@
 // ignore: depend_on_referenced_packages
 import 'package:appblooddonation/models/commonbloc.dart';
+
+import 'package:appblooddonation/models/donarregistrationmodel.dart';
 import 'package:appblooddonation/models/loginmodel.dart';
 import 'package:appblooddonation/models/signinmodel.dart';
 import 'package:appblooddonation/webclient.dart';
@@ -25,6 +27,36 @@ class Repository {
     final dynamic response = await WebClient.post(url, data);
     final SigninModel userModel = SigninModel.fromJson(response);
     return userModel;
+  }
+  // Future<SigninModel> hospitalin(
+  //     {required String url, dynamic data}) async {
+  //   var connectivityResult = await (Connectivity().checkConnectivity());
+  //   if (connectivityResult == ConnectivityResult.none) {
+  //     Fluttertoast.showToast(
+  //       msg: "No internet connection",
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.CENTER,
+  //     );
+  //   }
+  //   final dynamic response = await WebClient.post(url, data);
+  //   final SigninModel userModel = SigninModel.fromJson(response);
+  //   return userModel;
+  // }
+
+
+  Future<Donarregistrationmodel> registerin(
+      {required String url, dynamic data}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      Fluttertoast.showToast(
+        msg: "No internet connection",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+      );
+    }
+    final dynamic response = await WebClient.post(url, data);
+    final Donarregistrationmodel regModel = Donarregistrationmodel.fromJson(response);
+    return regModel;
   }
   Future<LoginModel> checkPhoneNumber(
       {required String url, dynamic data}) async {

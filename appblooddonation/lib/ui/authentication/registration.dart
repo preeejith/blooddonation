@@ -34,74 +34,126 @@ class _RegistrationState extends State<Registration> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text(
-                'Registration Form',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              // const Text(
+              //   'Registration Form',
+              //   style: TextStyle(
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              //   textAlign: TextAlign.center,
+              // ),
               const SizedBox(height: 20.0),
               TextField(
                 controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: locationController,
-                decoration: const InputDecoration(
-                  labelText: 'location',
-                ),
-              ),
-              const SizedBox(height: 10.0),
-              TextField(
-                controller: phoneController,
-                keyboardType: TextInputType.phone,
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
+                decoration: InputDecoration(
+                  hintText:"Name" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.person),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
                 ),
               ),
               const SizedBox(height: 10.0),
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+                decoration: InputDecoration(
+                  hintText:"Email" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.email),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
                 ),
               ),
+              const SizedBox(height: 10.0),
+               TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText:"Password" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.password),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
+                ),
+              ),
+              
+              const SizedBox(height: 10.0),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+                decoration: InputDecoration(
+                  hintText:"Phone" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.phone),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
+                ),
+              ),
+              
+              
               const SizedBox(height: 10.0),
               TextField(
                 controller: bloodgroupController,
                 keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'blood Group',
+                decoration: InputDecoration(
+                  hintText:"Blood Group" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.bloodtype),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
                 ),
               ),
               const SizedBox(height: 10.0),
               TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
+                controller: locationController,
+                decoration: InputDecoration(
+                  hintText:"Location" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.location_city),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
                 ),
               ),
+              
               const SizedBox(height: 10.0),
-              TextField(
-                controller: districtController,
-                decoration: const InputDecoration(
-                  labelText: 'District',
-                ),
-              ),
+              // TextField(
+              //   controller: districtController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'District',
+              //   ),
+              // ),
               const SizedBox(height: 10.0),
-              TextField(
-                controller: townController,
-                decoration: const InputDecoration(
-                  labelText: 'Town',
-                ),
-              ),
+              // TextField(
+              //   controller: townController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Town',
+              //   ),
+              // ),
               // const SizedBox(height: 20.0),
               // TextField(
               //   controller: pincodeController,
@@ -137,12 +189,12 @@ class _RegistrationState extends State<Registration> {
                         width: 18.0,
                         child: CircularProgressIndicator(
                           valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.black),
+                              AlwaysStoppedAnimation<Color>(Colors.pink),
                           strokeWidth: 2,
                         ),
                       );
                     } else {
-                      return const Text('Register');
+                      return const Text('Register',style: TextStyle(color: Colors.pink), );
                     }
                   },
                   listener: (context, state) {

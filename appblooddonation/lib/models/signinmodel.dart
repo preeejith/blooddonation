@@ -1,3 +1,4 @@
+
 class SigninModel {
   bool? status;
   String? msg;
@@ -15,12 +16,12 @@ class SigninModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['status'] = status;
-    data['msg'] = msg;
+    data['status'] = this.status;
+    data['msg'] = this.msg;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
-    data['token'] = token;
+    data['token'] = this.token;
     return data;
   }
 }
@@ -58,14 +59,14 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = sId;
-    data['role'] = role;
-    data['status'] = status;
-    data['donarname'] = donarname;
-    data['gmail'] = gmail;
-    data['create_date'] = createDate;
-    data['update_date'] = updateDate;
-    data['__v'] = iV;
+    data['_id'] = this.sId;
+    data['role'] = this.role;
+    data['status'] = this.status;
+    data['donarname'] = this.donarname;
+    data['gmail'] = this.gmail;
+    data['create_date'] = this.createDate;
+    data['update_date'] = this.updateDate;
+    data['__v'] = this.iV;
     return data;
   }
 }

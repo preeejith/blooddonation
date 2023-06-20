@@ -18,7 +18,7 @@ class _LoginState extends State<Login> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/img.png",height: 150,width: 100),
+              Image.asset("assets/blood.png",height: 150,width: 100),
 
 
               SizedBox(

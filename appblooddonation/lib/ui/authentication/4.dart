@@ -27,7 +27,7 @@ class _FourState extends State<Four> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/img.png", height: 150, width: 100),
+              Image.asset("assets/blood.png", height: 150, width: 100),
               const Column(
                 children: [
                   Center(
@@ -156,7 +156,7 @@ class _FourState extends State<Four> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const LoginScreen()));
+                            builder: (context) => const Login()));
 
                     /// Handle button press
                   },

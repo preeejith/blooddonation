@@ -38,27 +38,50 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Welcome to the Left Over',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                // const Text(
+                //   // 'Welcome to the Left Over',
+                //   style: TextStyle(
+                //     fontSize: 24,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
                 const SizedBox(height: 20.0),
                 TextFormField(
-                  controller: email,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
+                  style: TextStyle(
+                     color: Color(0xffEEA02C)
                   ),
+                  
+                  controller: email,
+                  
+                  decoration: InputDecoration(
+                  hintText:"Email" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.email),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
+                  ),
+                ),
+                  
+
                 ),
                 const SizedBox(height: 20.0),
                 TextFormField(
                   controller: password,
                   obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
+                  decoration: InputDecoration(
+                  hintText:"Password" ,
+                  contentPadding: const EdgeInsets.all(15),
+                  prefixIcon: Icon(Icons.password),
+
+                  //labelText: "xxx-xxx@gmail.com",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)
+
                   ),
+                ),
                 ),
                 const SizedBox(height: 20.0),
                 ElevatedButton(
@@ -92,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       } else {
-                        return const Text('Login');
+                        return const Text('Login',style: TextStyle(color: Colors.pink),);
                       }
                     },
                     listener: (context, state) {
@@ -101,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Four()));
+                                  builder: (context) => const Certificate()));
                         }
                       } else if (state is LoginError) {
                         Fluttertoast.showToast(
@@ -124,29 +147,29 @@ class _LoginScreenState extends State<LoginScreen> {
                 //   child: const Text('BuyerLogin'),
                 // ),
                 const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () async {
-                        // Map data = {
-                        //   "email": mails,
-                        // };
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     ElevatedButton(
+                //       onPressed: () async {
+                //         // Map data = {
+                //         //   "email": mails,
+                //         // };
 
-                        // final dynamic response = await WebClient.post(
-                        //     "email/send/notification/htmlcontent", data);
+                //         // final dynamic response = await WebClient.post(
+                //         //     "email/send/notification/htmlcontent", data);
 
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const Certificate()));
-                      },
-                      child: const Text('Register as Buyer'),
-                    ),
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //                 builder: (context) =>
+                //                     const Certificate()));
+                //       },
+                //       // child: const Text('Register as Buyer'),
+                //     ),
                   
-                  ],
-                ),
+                //   ],
+                // ),
               ],
             ),
           ),

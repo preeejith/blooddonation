@@ -23,6 +23,10 @@ class _CertificateState extends State<Certificate> {
   Widget build(BuildContext context) {
     return Scaffold(
 
+appBar: AppBar(
+  
+  backgroundColor: Colors.pink,
+  title: Text("Upload Certificate",style: TextStyle(color: Colors.white),),),
       body: SingleChildScrollView(
          child: Column(
            children: [
@@ -32,10 +36,9 @@ class _CertificateState extends State<Certificate> {
  Stack(
  children: [
  imageFile == null
- ? const CircleAvatar(
-  child: Icon(Icons.abc),
- radius: 60,
- backgroundColor: Color(0xff2B8DD4),
+ ? Padding(
+   padding: const EdgeInsets.all(8.0),
+   child: Container(height: 200,width: 300,color: Colors.green,),
  )
  : const SizedBox.shrink(),
 Positioned(
@@ -60,17 +63,20 @@ Positioned(
  children: <Widget>[
  imageFile == null
  ? const SizedBox.shrink()
-: CircleAvatar(
- radius: 50,
- backgroundImage: FileImage(imageFile!),
+: Container(
+height: 200,width: 300,color: Colors.green,
+
+child:Image.file(File(imageFile!.toString(),), width: 100,
+    height: 100,)
+//  Image: FileImage(imageFile!),
  ),
 Positioned(
  right: 0,
  bottom: 0,
  child: imageFile == null
- ? CircleAvatar(
- radius: 60,
- backgroundColor: const Color(0xff2B8DD4),
+ ? Container(
+ color: Colors.red,
+height: 55,width: 200,
  child: IconButton(
  onPressed: () {
  _settingModalBottomSheet(context);
@@ -81,9 +87,9 @@ color: Colors.white,
  size: 15,
  ),
  ))
- : CircleAvatar(
- backgroundColor: Colors.red,
- radius: 15,
+ : Container(
+ color: Colors.red,
+height: 55,width: 200,
 child: IconButton(
  onPressed: () {
  setState(() {
@@ -111,6 +117,10 @@ child: IconButton(
 
                         },
       ),
+imageFile!=null?
+Text("Upload Certificate",style: TextStyle(color: Colors.black),):Text("Please Upload your Certificate",style: TextStyle(color: Colors.black),),
+
+
            ],
          ),
     ),
