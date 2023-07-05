@@ -1,0 +1,68 @@
+const UserModel = require('../models/usermodel');
+// const tokenModel = require('../model/tokenmodel');
+
+var jwt = require('jsonwebtoken');
+
+const Mics = require('../controller/misc')
+
+const defaults = require('../defaults');
+
+
+module.exports = async function (req, res, next) {
+    try {
+        var token = req.body.token || req.query.token || req.headers.token;
+        if (token) {    
+            try {
+                var user = await jwt.verify(token, defaults.secret);
+                if (user) {
+                    req.user = user;
+                    
+                    var Admin = await UserModel.findOne({ _id: req.user.id, role: 'Admin', status: { $ne: "Deleted" } }, { password: 0 });
+                    // var tok = await tokenModel.findOne({ userid: req.user.id, tokenvalue: token, status: 'active' });
+                    if ((!Mics.isnullorempty(Admin)) /* && (!Mics.isnullorempty(tok)) */) {
+                        req.user.user = Admin;
+                        next();
+                    }
+                    else {
+                        res.status(200).json({
+                            status: false,
+                            msg: 'Access Denied.'
+                        });
+                        return;
+                    }
+                } else {
+                    res.status(200).json({
+                        status: false,
+                        expired: true,
+                        msg: 'Failed to authenticate token.'
+                    });
+                    return;
+                }
+            } catch (e) {
+                console.log(e)
+                res.status(200).json({
+                    status: false,
+                    expired: true,
+                    msg: 'Token expired, need to login again.'
+                });
+                return;
+            }
+
+        } else {
+            res.status(200).json({
+                status: false,
+                expired: true,
+                msg: 'No token provided.'
+            });
+            return;
+        }
+
+    } catch (e) {
+        res.status(500).json({
+            status: false,
+            expired: true,
+            msg: 'Something went wrong!!!'
+        });
+        return;
+    }
+};
